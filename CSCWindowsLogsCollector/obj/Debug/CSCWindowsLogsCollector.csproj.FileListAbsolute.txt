@@ -1,0 +1,11 @@
+C:\Users\yccsokchea\source\repos\CSCWindowsLogsCollector\CSCWindowsLogsCollector\bin\Debug\CSCWindowsLogsCollector.exe.config
+C:\Users\yccsokchea\source\repos\CSCWindowsLogsCollector\CSCWindowsLogsCollector\bin\Debug\CSCWindowsLogsCollector.exe
+C:\Users\yccsokchea\source\repos\CSCWindowsLogsCollector\CSCWindowsLogsCollector\bin\Debug\CSCWindowsLogsCollector.pdb
+C:\Users\yccsokchea\source\repos\CSCWindowsLogsCollector\CSCWindowsLogsCollector\obj\Debug\CSCWindowsLogsCollector.Properties.Resources.resources
+C:\Users\yccsokchea\source\repos\CSCWindowsLogsCollector\CSCWindowsLogsCollector\obj\Debug\CSCWindowsLogsCollector.csproj.GenerateResource.cache
+C:\Users\yccsokchea\source\repos\CSCWindowsLogsCollector\CSCWindowsLogsCollector\obj\Debug\CSCWindowsLogsCollector.csproj.CoreCompileInputs.cache
+C:\Users\yccsokchea\source\repos\CSCWindowsLogsCollector\CSCWindowsLogsCollector\obj\Debug\CSCWindowsLogsCollector.exe
+C:\Users\yccsokchea\source\repos\CSCWindowsLogsCollector\CSCWindowsLogsCollector\obj\Debug\CSCWindowsLogsCollector.pdb
+C:\Users\yccsokchea\source\repos\CSCWindowsLogsCollector\CSCWindowsLogsCollector\obj\Debug\CSCWindowsLogsCollector.frmInsertLogs.resources
+C:\Users\yccsokchea\source\repos\CSCWindowsLogsCollector\CSCWindowsLogsCollector\obj\Debug\Interop.IWshRuntimeLibrary.dll
+C:\Users\yccsokchea\source\repos\CSCWindowsLogsCollector\CSCWindowsLogsCollector\obj\Debug\CSCWindowsLogsCollector.csproj.ResolveComReference.cache

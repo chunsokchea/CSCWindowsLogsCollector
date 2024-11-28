@@ -1,0 +1,18 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="CSCWindowsLogsCollector.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="connectionStringM" Type="System.String" Scope="User">
+      <Value Profile="(Default)">hT+Em5yR6MQosZCu1Q7LCY8/VxJh/iXzZvuZ18hYU5WQIgM8zz50Xgk+ahqVhiuIHTuRzaI80tRfyO1Fzw6ZkT4NRQh7JwAaVi7xgRDRSqLFiVGD5jZg756jgf90pmW/bMauuaDivzFm0CgXXPywWP4jtzBkXXhZK1/v747u96c=</Value>
+    </Setting>
+    <Setting Name="isStartup" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="isMinimize" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="minDay" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">7</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
