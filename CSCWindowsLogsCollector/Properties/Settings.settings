@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="connectionStringM" Type="System.String" Scope="User">
-      <Value Profile="(Default)">hT+Em5yR6MQosZCu1Q7LCY8/VxJh/iXzZvuZ18hYU5WQIgM8zz50Xgk+ahqVhiuIHTuRzaI80tRfyO1Fzw6ZkT4NRQh7JwAaVi7xgRDRSqLFiVGD5jZg756jgf90pmW/bMauuaDivzFm0CgXXPywWP4jtzBkXXhZK1/v747u96c=</Value>
+      <Value Profile="(Default)">connectionStringHere</Value>
     </Setting>
     <Setting Name="isStartup" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
