@@ -8,7 +8,7 @@ namespace CSCWindowsLogsCollector
 {
     public class Cmd
     {
-        public static string ConnectionString = Encryption.Decode( Settings.Default.connectionStringM);
+        public static string ConnectionString =  Settings.Default.connectionStringM;
 
         private static SqlConnection cn = null;
         private static SqlCommand cmd = null;
