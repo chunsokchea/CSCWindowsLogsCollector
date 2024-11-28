@@ -41,14 +41,15 @@ namespace CSCWindowsLogsCollector
             int processedEntries = 0;
             
             DateTime today = DateTime.Today;
-            foreach (var log in eventLogApp)
+             foreach (var log in eventLogApp)
             {
                 //if (log.LogDate == today)
                 //{
-                    if (!LogExists(log, logApp))
-                    {
-                        InsertLogIntoDatabase(log, logApp);
-                    }
+                if (!LogExists2(connectionString, log, logApp))
+                {
+                    //InsertLogIntoDatabase(log, logApp);
+                    InsertLogIntoDatabase2(connectionString,log, logApp);
+                }
                 //}
                 processedEntries++;
                 int progressPercentage = (int)((double)processedEntries / totalEntries * 100);
@@ -59,15 +60,16 @@ namespace CSCWindowsLogsCollector
             {
                 //if (log.LogDate == today)
                 //{
-                    if (!LogExists(log, lagSystem))
-                    {
-                        InsertLogIntoDatabase(log, lagSystem);
-                    }
+                if (!LogExists2(connectionString,log, logSystem))
+                {
+                    //InsertLogIntoDatabase(log, lagSystem);
+                    InsertLogIntoDatabase2(connectionString, log, logSystem);
+                }
                 //}
                 processedEntries++;
                 int progressPercentage = (int)((double)processedEntries / totalEntries * 100);
                 backgroundWorker.ReportProgress(progressPercentage);
-            }            
+            }             
         }       
        
         
@@ -109,9 +111,7 @@ namespace CSCWindowsLogsCollector
             Cmd.Parameters["@ServerName"] = pcName;
             Cmd.Parameters["@ServerIP"] = pcIp;
             Cmd.Parameters["@LogType"] = logType;
-            Cmd.Parameters["@LogDate"] = entry.LogDate;
-            Cmd.Parameters["@LogType"] = logType;
-            Cmd.Parameters["@LogDate"] = entry.LogDate;
+            Cmd.Parameters["@LogDate"] = entry.LogDate;  
             Cmd.Parameters["@Source"] = entry.Source;
             Cmd.Parameters["@EventID"] = entry.EventID.ToString();
             Cmd.Parameters["@EventType"] = entry.EventType;
@@ -119,7 +119,7 @@ namespace CSCWindowsLogsCollector
 
             Cmd.ExecuteNonQuery(query);
         }
-        static bool LogExists(EventLogModel entry,string logType)
+        static bool LogExists(EventLogModel entry, string logType)
         {
             string query = @"
                 SELECT COUNT(1)
@@ -138,10 +138,61 @@ namespace CSCWindowsLogsCollector
             Cmd.Parameters["@Source"] = entry.Source;
             Cmd.Parameters["@EventID"] = entry.EventID.ToString();
             Cmd.Parameters["@EventType"] = entry.EventType;
-            Cmd.Parameters["@Message"] = entry.Message;
+            //Cmd.Parameters["@Message"] = entry.Message;
 
             int count = (int)Cmd.ExecuteScalar(query);
-            return count > 0;            
+            return count > 0;
+        }
+        static void InsertLogIntoDatabase2(string connectionString, EventLogModel log, string logType)
+        {
+            string query = @"
+                INSERT INTO WindowsLogs (ServerName,ServerIP,LogType,LogDate, Source, EventID, EventType, Message)
+            VALUES (@ServerName,@ServerIP,@LogType,@LogDate, @Source, @EventID, @EventType, @Message)";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@ServerName", pcName);
+                command.Parameters.AddWithValue("@ServerIP", pcIp);
+                command.Parameters.AddWithValue("@LogType", logType);
+                command.Parameters.AddWithValue("@LogDate", log.LogDate);
+                command.Parameters.AddWithValue("@Source", log.Source);
+                command.Parameters.AddWithValue("@EventID", log.EventID);
+                command.Parameters.AddWithValue("@EventType", log.EventType);
+                command.Parameters.AddWithValue("@Message", log.Message);
+
+                connection.Open();
+                command.ExecuteNonQuery();
+            }
+        }
+        static bool LogExists2(string connectionString, EventLogModel log, string logType)
+        {
+            string query = @"
+                SELECT COUNT(1)
+                FROM WindowsLogs
+                WHERE LogDate = @LogDate
+                AND Source = @Source
+                AND EventID = @EventID
+                AND EventType = @EventType
+                AND ServerName = @ServerName
+                AND ServerIP = @ServerIP
+                AND LogType =   @LogType";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@ServerName", pcName);
+                command.Parameters.AddWithValue("@ServerIP", pcIp);
+                command.Parameters.AddWithValue("@LogType", logType);
+                command.Parameters.AddWithValue("@LogDate", log.LogDate);
+                command.Parameters.AddWithValue("@Source", log.Source);
+                command.Parameters.AddWithValue("@EventID", log.EventID);
+                command.Parameters.AddWithValue("@EventType", log.EventType);
+
+                connection.Open();
+                int count = (int)command.ExecuteScalar();
+                return count > 0;
+            }
         }
 
         private void timer1_Tick(object sender, EventArgs e)
