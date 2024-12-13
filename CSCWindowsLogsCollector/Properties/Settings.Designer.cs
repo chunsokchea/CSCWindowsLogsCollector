@@ -25,9 +25,7 @@ namespace CSCWindowsLogsCollector.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("hT+Em5yR6MQosZCu1Q7LCY8/VxJh/iXzZvuZ18hYU5WQIgM8zz50Xgk+ahqVhiuIHTuRzaI80tRfyO1Fz" +
-            "w6ZkT4NRQh7JwAaVi7xgRDRSqLFiVGD5jZg756jgf90pmW/bMauuaDivzFm0CgXXPywWP4jtzBkXXhZK" +
-            "1/v747u96c=")]
+        [global::System.Configuration.DefaultSettingValueAttribute("connecyion here")]
         public string connectionStringM {
             get {
                 return ((string)(this["connectionStringM"]));
