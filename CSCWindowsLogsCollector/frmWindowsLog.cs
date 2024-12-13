@@ -18,6 +18,7 @@ namespace CSCWindowsLogsCollector
         static BackgroundWorker backgroundWorker = new BackgroundWorker();
         static string pcName;
         static string pcIp;
+        static connectionString=Settings.Default.connectionStringM;
         public frmInsertLogs()
         {
             InitializeComponent();
@@ -29,14 +30,14 @@ namespace CSCWindowsLogsCollector
         static void BackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
         {        
             string logApp = "Application";
-            string lagSystem = "System";
+            string logSystem = "System";
             string computerName = Environment.MachineName;
             string ipAddress = GetLocalIPAddress();
             
             // EventLog eventLogApp = new EventLog(logApp);
             List<EventLogModel> eventLogApp = CollectorServices.GetTodayLogs(logApp, computerName, ipAddress);
             //EventLog eventLogSystem = new EventLog(lagSystem);
-            List<EventLogModel> eventLogSystem = CollectorServices.GetTodayLogs(lagSystem, computerName, ipAddress);
+            List<EventLogModel> eventLogSystem = CollectorServices.GetTodayLogs(logSystem, computerName, ipAddress);
             int totalEntries = eventLogApp.Count+ eventLogSystem.Count;
             int processedEntries = 0;
             
